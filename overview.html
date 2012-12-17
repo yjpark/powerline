@@ -80,14 +80,14 @@ conflict with an unrelated project.</p>
 <h3>Vim usage<a class="headerlink" href="#vim-usage" title="Permalink to this headline">¶</a></h3>
 <p>If Powerline is installed as a system-wide Python package, you can enable
 the plugin by adding the following line to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>:</p>
-<div class="highlight-python"><pre>python import powerline.plugin.vim.load_vim_plugin</pre>
+<div class="highlight-python"><pre>python from powerline.ext.vim import source_plugin; source_plugin()</pre>
 </div>
 <p>If Powerline is installed outside Python&#8217;s search path (e.g. by having the
 git repo in your dotfiles folder) you&#8217;ll have to source the vim plugin file
 with an absolute path to the plugin location.</p>
 <p>Add the following line to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>, where <tt class="docutils literal"><span class="pre">{path}</span></tt> is the path to
 the main Powerline project folder:</p>
-<div class="highlight-python"><pre>source {path}/powerline/plugin/vim/powerline.vim</pre>
+<div class="highlight-python"><pre>source {path}/powerline/ext/vim/powerline.vim</pre>
 </div>
 </div>
 </div>

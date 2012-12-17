@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; Powerline dev documentation</title>
+    <title>Introduction &mdash; Powerline beta documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     'dev',
+        VERSION:     'beta',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Powerline dev documentation" href="index.html" />
+    <link rel="top" title="Powerline beta documentation" href="index.html" />
     <link rel="next" title="Overview" href="overview.html" />
     <link rel="prev" title="Powerline" href="index.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="index.html" title="Powerline"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Powerline dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,6 +52,40 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>This is the next version of Powerline, implemented in Python. It aims to
+resolve some of the &#8220;unresolvable&#8221; problems of the vimscript implementation,
+as well as providing a common code base for all projects that use Powerline
+in some way (e.g. shell prompts and tmux themes).</p>
+<p>The project is currently in beta, and most of the functionality in the old
+vimscript project is already implemented.</p>
+<div class="section" id="feature-highlights">
+<h2>Feature highlights<a class="headerlink" href="#feature-highlights" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Better performance.</strong> Python performs quite a bit better than vimscript,
+and by having most of the code in Python instead of vimscript it&#8217;s also
+much easier to profile the code and eliminate bottlenecks.</li>
+<li><strong>A much leaner code base.</strong> With most of the functionality of the old
+project implemented the new version consists of less than half the amount
+of code.</li>
+<li><strong>Automatic removal of less important segments in small windows.</strong> Not all
+information is equally important to have in the statusline, and segments
+with e.g.  encoding and file format information are automatically removed
+in smaller windows.</li>
+<li><strong>Dynamic statusline evaluation in Python.</strong> Statuslines are dynamically
+rendered in Python instead of relying on vim&#8217;s statusline flags, which
+allows much more flexibility when creating statuslines.</li>
+<li><strong>The possibility of adding more segments.</strong> Because of vim&#8217;s hardcoded
+limitation of 80 statusline options, the vimscript implementation
+triggered an error when adding more segments to the default theme. Since
+segment contents are now rendered as plain text in Python it&#8217;s possible to
+add many more segments in the statusline before reaching this limit.</li>
+<li><strong>New and improved theme and colorscheme syntax.</strong> Themes and colorschemes
+are now written in JSON, with a much cleaner syntax that&#8217;s easier to learn
+and work with. Themes and colorschemes are also much more configurable,
+and it&#8217;s easy to write your own and store them in your home config
+directory (usually <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt>).</li>
+</ul>
+</div>
 </div>
 
 
@@ -60,6 +94,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#feature-highlights">Feature highlights</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Powerline</a></p>
@@ -100,7 +142,7 @@
         <li class="right" >
           <a href="index.html" title="Powerline"
              >previous</a> |</li>
-        <li><a href="index.html">Powerline dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

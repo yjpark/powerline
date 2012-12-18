@@ -66,13 +66,19 @@ You can check if your vim supports Python 2 by running <tt class="docutils liter
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>Powerline is intended to be installed as a system-wide Python package that
-can be easily included in other projects.</p>
-<p>Powerline is available <a class="reference external" href="https://aur.archlinux.org/packages/powerline-git/">on the AUR</a> for Arch Linux users.</p>
+can be easily included in other projects. It can be installed by running the
+following command as root:</p>
+<div class="highlight-python"><pre>pip install https://github.com/Lokaltog/powerline/tarball/develop</pre>
+</div>
+<p>Or, if you use <tt class="docutils literal"><span class="pre">easy_install</span></tt>:</p>
+<div class="highlight-python"><pre>easy_install https://github.com/Lokaltog/powerline/tarball/develop</pre>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This project is currently unavailable on the PyPI due to a naming
-conflict with an unrelated project.</p>
+<p class="last">Make sure that you install the package for Python 2. For distros
+like Arch Linux you&#8217;ll have to run <tt class="docutils literal"><span class="pre">pip2</span></tt> instead of <tt class="docutils literal"><span class="pre">pip</span></tt>.</p>
 </div>
+<p>Powerline is available <a class="reference external" href="https://aur.archlinux.org/packages/powerline-git/">on the AUR</a> for Arch Linux users.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>

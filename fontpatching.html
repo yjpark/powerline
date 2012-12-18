@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Font patching &mdash; Powerline beta documentation</title>
+    <title>Font patcher &mdash; Powerline beta documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -50,8 +50,166 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="font-patching">
-<h1>Font patching<a class="headerlink" href="#font-patching" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="font-patcher">
+<h1>Font patcher<a class="headerlink" href="#font-patcher" title="Permalink to this headline">¶</a></h1>
+<p>Powerline provides a font patcher for custom glyphs like the segment
+dividers (arrows), branch symbol, padlock symbol, etc. The font patcher
+requires FontForge with Python bindings to work.</p>
+<p>Powerline stores all special glyphs in the Unicode <em>Private Use Area</em>
+(<tt class="docutils literal"><span class="pre">U+E000</span></tt>-<tt class="docutils literal"><span class="pre">U+F8FF</span></tt>).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The code points have changed in this version of Powerline! This
+means that you either have to patch your font again, or change the glyphs
+Powerline uses in your user configuration.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Powerline no longer works with rxvt-unicode unless you either use
+rxvt-unicode compiled with <tt class="docutils literal"><span class="pre">--enable-unicode3</span></tt>, or you use fonts patched
+with the legacy font patcher and change the glyphs in your user
+configuration.</p>
+</div>
+<div class="section" id="glyph-table">
+<h2>Glyph table<a class="headerlink" href="#glyph-table" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="12%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code point</th>
+<th class="head">Glyph</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">U+E0A0</span></tt></td>
+<td></td>
+<td>Version control branch</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">U+E0A1</span></tt></td>
+<td></td>
+<td>LN (line) symbol</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">U+E0A2</span></tt></td>
+<td></td>
+<td>Closed padlock</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">U+E0B0</span></tt></td>
+<td></td>
+<td>Rightwards black arrowhead</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">U+E0B1</span></tt></td>
+<td></td>
+<td>Rightwards arrowhead</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">U+E0B2</span></tt></td>
+<td></td>
+<td>Leftwards black arrowhead</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">U+E0B3</span></tt></td>
+<td></td>
+<td>Leftwards arrowhead</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The font patcher is located at <tt class="docutils literal"><span class="pre">powerline/fontpatcher/fontpatcher.py</span></tt>. It
+requires Python 2.7 and FontForge compiled with Python bindings to work.</p>
+<p>Patched fonts are renamed by default (&#8221; for Powerline&#8221; is added to the font
+name) so they don&#8217;t conflict with existing fonts. Use the <tt class="docutils literal"><span class="pre">--no-rename</span></tt>
+option to disable font renaming.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Bitmap fonts are not supported, and will probably never be
+supported officially due to difficulty creating a font patcher that works
+for bitmap fonts. The recommended method of patching bitmap fonts is to draw
+the glyphs manually using a tool like <tt class="docutils literal"><span class="pre">gbdfed</span></tt>.</p>
+</div>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Install fontforge with Python bindings. For Ubuntu users the required
+package is <tt class="docutils literal"><span class="pre">python-fontforge</span></tt>, for Arch Linux users the required
+package is <tt class="docutils literal"><span class="pre">fontforge</span></tt>. It should be something similar for other
+distros.</p>
+</li>
+<li><p class="first">Run the font patcher:</p>
+<div class="highlight-python"><pre>$ /path/to/fontpatcher.py MyFontFile.ttf</pre>
+</div>
+</li>
+<li><p class="first">Copy the font file into <tt class="docutils literal"><span class="pre">~/.fonts</span></tt> (or another X font directory):</p>
+<div class="highlight-python"><pre>$ cp "MyFontFile for Powerline.otf" ~/.fonts</pre>
+</div>
+</li>
+<li><p class="first">Update your font cache:</p>
+<div class="highlight-python"><pre>$ sudo fc-cache -vf</pre>
+</div>
+<p>If you&#8217;re using vim in a terminal you may need to close all open terminal
+windows after updating the font cache.</p>
+</li>
+<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="docutils literal"><span class="pre">vimrc</span></tt> file:</p>
+<div class="highlight-python"><pre>set guifont=MyFont\ for\ Powerline</pre>
+</div>
+<p><strong>Terminal users:</strong> Update your terminal configuration to use the patched
+font.</p>
+</li>
+<li><p class="first">Open vim and enjoy your new statusline!</p>
+</li>
+</ol>
+</div>
+<div class="section" id="os-x">
+<h3>OS X<a class="headerlink" href="#os-x" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Check if you have a FontForge version with Python support by running
+<tt class="docutils literal"><span class="pre">fontforge</span> <span class="pre">-version</span></tt>. You should see something like this:</p>
+<div class="highlight-python"><pre>$ fontforge -version
+Copyright (c) 2000-2011 by George Williams.
+Executable based on sources from 13:48 GMT 22-Feb-2011-D.
+Library based on sources from 13:48 GMT 22-Feb-2011.
+fontforge 20110222
+libfontforge 20110222</pre>
+</div>
+<p>Make sure that the executable version number doesn&#8217;t have <tt class="docutils literal"><span class="pre">NoPython</span></tt> in
+it. If everything looks OK, skip ahead to step 4.</p>
+</li>
+<li><p class="first">If you have FontForge but with <tt class="docutils literal"><span class="pre">NoPython</span></tt> in the version number, please
+try to update to a later version:</p>
+<div class="highlight-python"><pre>$ brew uninstall fontforge
+$ brew update
+$ brew install --use-gcc fontforge</pre>
+</div>
+<p><strong>Note:</strong> You may have to use <tt class="docutils literal"><span class="pre">--use-clang</span></tt> instead of <tt class="docutils literal"><span class="pre">--use-gcc</span></tt>
+when compiling FontForge.</p>
+</li>
+<li><p class="first">If you don&#8217;t have FontForge, install it with Homebrew:</p>
+<div class="highlight-python"><pre>$ brew update
+$ brew install --use-gcc fontforge</pre>
+</div>
+</li>
+<li><p class="first">Patch your fonts by passing the <tt class="docutils literal"><span class="pre">fontpatcher</span></tt> script as a parameter to
+FontForge:</p>
+<div class="highlight-python"><pre>$ fontforge -script /path/to/fontpatcher.py MyFontFile.ttf</pre>
+</div>
+</li>
+<li><p class="first">Install the font by double-clicking the font file in Finder and click
+&#8220;Install this font&#8221; from the preview window.</p>
+</li>
+<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="docutils literal"><span class="pre">vimrc</span></tt> file:</p>
+<div class="highlight-python"><pre>set guifont=MyFont\ for\ Powerline</pre>
+</div>
+<p><strong>Terminal users:</strong> Update your terminal configuration to use the patched
+font.</p>
+</li>
+<li><p class="first">Open vim and enjoy your new statusline!</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 
 
@@ -60,6 +218,19 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Font patcher</a><ul>
+<li><a class="reference internal" href="#glyph-table">Glyph table</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#os-x">OS X</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="overview.html"
                         title="previous chapter">Overview</a></p>

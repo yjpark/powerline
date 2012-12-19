@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Font patcher &mdash; Powerline beta documentation</title>
+    <title>Font patching &mdash; Powerline beta documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -50,13 +50,13 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="font-patcher">
-<h1>Font patcher<a class="headerlink" href="#font-patcher" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="font-patching">
+<span id="id1"></span><h1>Font patching<a class="headerlink" href="#font-patching" title="Permalink to this headline">¶</a></h1>
 <p>Powerline provides a font patcher for custom glyphs like the segment
 dividers (arrows), branch symbol, padlock symbol, etc. The font patcher
 requires FontForge with Python bindings to work.</p>
-<p>Powerline stores all special glyphs in the Unicode <em>Private Use Area</em>
-(<tt class="docutils literal"><span class="pre">U+E000</span></tt>-<tt class="docutils literal"><span class="pre">U+F8FF</span></tt>).</p>
+<p>Check out the <a class="reference external" href="https://github.com/Lokaltog/powerline-fonts">powerline-fonts</a> repository on GitHub for
+patched versions of some popular programming fonts.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The code points have changed in this version of Powerline! This
@@ -72,6 +72,8 @@ configuration.</p>
 </div>
 <div class="section" id="glyph-table">
 <h2>Glyph table<a class="headerlink" href="#glyph-table" title="Permalink to this headline">¶</a></h2>
+<p>Powerline stores all special glyphs in the Unicode <em>Private Use Area</em>
+(<tt class="docutils literal"><span class="pre">U+E000</span></tt>-<tt class="docutils literal"><span class="pre">U+F8FF</span></tt>).</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -147,7 +149,7 @@ distros.</p>
 </div>
 </li>
 <li><p class="first">Update your font cache:</p>
-<div class="highlight-python"><pre>$ sudo fc-cache -vf</pre>
+<div class="highlight-python"><pre>$ fc-cache -vf ~/.fonts</pre>
 </div>
 <p>If you&#8217;re using vim in a terminal you may need to close all open terminal
 windows after updating the font cache.</p>
@@ -220,7 +222,7 @@ font.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Font patcher</a><ul>
+<li><a class="reference internal" href="#">Font patching</a><ul>
 <li><a class="reference internal" href="#glyph-table">Glyph table</a></li>
 <li><a class="reference internal" href="#usage">Usage</a><ul>
 <li><a class="reference internal" href="#linux">Linux</a></li>

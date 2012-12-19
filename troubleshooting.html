@@ -52,6 +52,59 @@
             
   <div class="section" id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>I can&#8217;t see any fancy symbols, what&#8217;s wrong?</dt>
+<dd><p class="first">Make sure that you&#8217;ve configured gvim or your terminal emulator to use
+a patched font (see <a class="reference internal" href="fontpatching.html#font-patching"><em>Font patching</em></a>).</p>
+<p>Make sure that vim is compiled with the <tt class="docutils literal"><span class="pre">--with-features=big</span></tt> flag.</p>
+<p>If you&#8217;re using rxvt-unicode, make sure that it&#8217;s compiled with the
+<tt class="docutils literal"><span class="pre">--enable-unicode3</span></tt> flag.</p>
+<p class="last">You need to set your <tt class="docutils literal"><span class="pre">LANG</span></tt> and <tt class="docutils literal"><span class="pre">LC_*</span></tt> environment variables to
+a UTF-8 locale (e.g. <tt class="docutils literal"><span class="pre">LANG=en_US.utf8</span></tt>). Consult your Linux distro&#8217;s
+documentation for information about setting these variables correctly.</p>
+</dd>
+<dt>The fancy symbols look a bit blurry or &#8220;off&#8221;!</dt>
+<dd>Make sure that you have patched all variants of your font (i.e. both the
+regular and the bold font files).</dd>
+<dt>I&#8217;m unable to patch my font, what should I do?</dt>
+<dd><p class="first">Font patching is only known to work on most Linux and OS X machines. If
+you have followed the instructions on <a class="reference internal" href="fontpatching.html#font-patching"><em>Font patching</em></a> and still
+have problems, please submit an issue on GitHub.</p>
+<p class="last">You could also check out the <a class="reference external" href="https://github.com/Lokaltog/powerline-fonts">powerline-fonts</a> repository on GitHub for
+patched versions of some popular programming fonts.</p>
+</dd>
+<dt>The colors are weird in the default OS X Terminal app!</dt>
+<dd><p class="first">The default OS X Terminal app is known to have some issues with the
+Powerline colors. Please use another terminal emulator. iTerm2 should
+work fine.</p>
+<p class="last">The arrows may have the wrong colors if you have changed the &#8220;minimum
+contrast&#8221; slider in the color tab of  your OS X settings.</p>
+</dd>
+<dt>I&#8217;m using tmux and Powerline looks like crap, what&#8217;s wrong?</dt>
+<dd><p class="first">You need to tell tmux that it has 256-color capabilities. Add this to
+your <tt class="docutils literal"><span class="pre">.tmux.conf</span></tt> to solve this issue:</p>
+<div class="highlight-python"><pre>set -g default-terminal "screen-256color"</pre>
+</div>
+<p class="last">If you use iTerm2, make sure that you have enabled the setting &#8216;Set
+locale variables automatically&#8217; in Profiles &gt; Terminal &gt; Environment.</p>
+</dd>
+</dl>
+<div class="section" id="vim-specific-issues">
+<h2>Vim-specific issues<a class="headerlink" href="#vim-specific-issues" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The statusline has strange characters like <tt class="docutils literal"><span class="pre">^B</span></tt> in it!</dt>
+<dd>Please add <tt class="docutils literal"><span class="pre">set</span> <span class="pre">encoding=utf-8</span></tt> to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>.</dd>
+<dt>The statusline has a lot of <tt class="docutils literal"><span class="pre">^</span></tt> or underline characters in it!</dt>
+<dd><p class="first">You need to configure the <tt class="docutils literal"><span class="pre">fillchars</span></tt> setting to disable statusline
+fillchars (see <tt class="docutils literal"><span class="pre">:h</span> <span class="pre">fillchars</span></tt> for details). Add this to your
+<tt class="docutils literal"><span class="pre">vimrc</span></tt> to solve this issue:</p>
+<div class="last highlight-python"><pre>set fillchars+=stl:\ ,stlnc:\</pre>
+</div>
+</dd>
+<dt>The statusline is hidden/only appears in split windows!</dt>
+<dd>Make sure that you have <tt class="docutils literal"><span class="pre">set</span> <span class="pre">laststatus=2</span></tt> in your <tt class="docutils literal"><span class="pre">vimrc</span></tt>.</dd>
+</dl>
+</div>
 </div>
 
 
@@ -60,6 +113,14 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#vim-specific-issues">Vim-specific issues</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="configuration.html"
                         title="previous chapter">Configuration</a></p>

@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Powerline beta documentation" href="index.html" />
     <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
-    <link rel="prev" title="Font patcher" href="fontpatching.html" /> 
+    <link rel="prev" title="Font patching" href="fontpatching.html" /> 
   </head>
   <body>
     <div class="related">
@@ -39,7 +39,7 @@
           <a href="troubleshooting.html" title="Troubleshooting"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="fontpatching.html" title="Font patcher"
+          <a href="fontpatching.html" title="Font patching"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
       </ul>
@@ -52,6 +52,32 @@
             
   <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>Powerline is configured with one main configuration file, and with separate
+configuration files for themes and colorschemes. All configuration files are
+written in JSON, with the excepton of segment definitions, which are written
+in Python.</p>
+<p>Powerline provides default configurations in the following locations:</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="#main-configuration">Main configuration</a></dt>
+<dd><tt class="docutils literal"><span class="pre">powerline/config.json</span></tt></dd>
+<dt><a class="reference internal" href="#color-scheme">Color scheme</a></dt>
+<dd><tt class="docutils literal"><span class="pre">powerline/colorschemes/default.json</span></tt></dd>
+<dt><a class="reference internal" href="#theme">Theme</a></dt>
+<dd><tt class="docutils literal"><span class="pre">powerline/themes/{extension}/default.json</span></tt></dd>
+</dl>
+<p>The default configuration files are stored in the main package. User
+configuration files are stored in <tt class="docutils literal"><span class="pre">$XDG_CONFIG_HOME/powerline</span></tt> for Linux
+users, and in <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> for OS X users. This usually
+corresponds to <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> on both platforms.</p>
+<div class="section" id="main-configuration">
+<h2>Main configuration<a class="headerlink" href="#main-configuration" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="color-scheme">
+<h2>Color scheme<a class="headerlink" href="#color-scheme" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="theme">
+<h2>Theme<a class="headerlink" href="#theme" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -60,9 +86,19 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuration</a><ul>
+<li><a class="reference internal" href="#main-configuration">Main configuration</a></li>
+<li><a class="reference internal" href="#color-scheme">Color scheme</a></li>
+<li><a class="reference internal" href="#theme">Theme</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="fontpatching.html"
-                        title="previous chapter">Font patcher</a></p>
+                        title="previous chapter">Font patching</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="troubleshooting.html"
                         title="next chapter">Troubleshooting</a></p>
@@ -98,7 +134,7 @@
           <a href="troubleshooting.html" title="Troubleshooting"
              >next</a> |</li>
         <li class="right" >
-          <a href="fontpatching.html" title="Font patcher"
+          <a href="fontpatching.html" title="Font patching"
              >previous</a> |</li>
         <li><a href="index.html">Powerline beta documentation</a> &raquo;</li> 
       </ul>

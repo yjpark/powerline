@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Powerline beta documentation" href="index.html" />
-    <link rel="next" title="Font patcher" href="fontpatching.html" />
+    <link rel="next" title="Font patching" href="fontpatching.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head>
   <body>
@@ -36,7 +36,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="fontpatching.html" title="Font patcher"
+          <a href="fontpatching.html" title="Font patching"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"
@@ -65,34 +65,42 @@ You can check if your vim supports Python 2 by running <tt class="docutils liter
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Powerline is intended to be installed as a system-wide Python package that
-can be easily included in other projects. It can be installed by running the
-following command as root:</p>
+<div class="section" id="installing-with-pip">
+<h3>Installing with <tt class="docutils literal"><span class="pre">pip</span></tt><a class="headerlink" href="#installing-with-pip" title="Permalink to this headline">¶</a></h3>
+<p>To install Powerline system-wide, run the following command as root:</p>
 <div class="highlight-python"><pre>pip install https://github.com/Lokaltog/powerline/tarball/develop</pre>
 </div>
-<p>Or, if you use <tt class="docutils literal"><span class="pre">easy_install</span></tt>:</p>
-<div class="highlight-python"><pre>easy_install https://github.com/Lokaltog/powerline/tarball/develop</pre>
-</div>
+<p>If you don&#8217;t have root access or don&#8217;t want to install Powerline
+system-wide, install with <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></tt> instead.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Make sure that you install the package for Python 2. For distros
 like Arch Linux you&#8217;ll have to run <tt class="docutils literal"><span class="pre">pip2</span></tt> instead of <tt class="docutils literal"><span class="pre">pip</span></tt>.</p>
 </div>
-<p>Powerline is available <a class="reference external" href="https://aur.archlinux.org/packages/powerline-git/">on the AUR</a> for Arch Linux users.</p>
+</div>
+<div class="section" id="distribution-specific-packages">
+<h3>Distribution-specific packages<a class="headerlink" href="#distribution-specific-packages" title="Permalink to this headline">¶</a></h3>
+<p>The following distribution-specific packages are officially supported, and
+they provide an easy way of installing and upgrading Powerline:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://aur.archlinux.org/packages/powerline-git/">Arch Linux (AUR)</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vim-usage">
 <h3>Vim usage<a class="headerlink" href="#vim-usage" title="Permalink to this headline">¶</a></h3>
-<p>If Powerline is installed as a system-wide Python package, you can enable
-the plugin by adding the following line to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>:</p>
+<p>If Powerline is installed as a Python package, you can enable the vim plugin
+by adding the following line to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>:</p>
 <div class="highlight-python"><pre>python from powerline.ext.vim import source_plugin; source_plugin()</pre>
 </div>
-<p>If Powerline is installed outside Python&#8217;s search path (e.g. by having the
-git repo in your dotfiles folder) you&#8217;ll have to source the vim plugin file
-with an absolute path to the plugin location.</p>
+<p>If Powerline is installed somewhere other than Python&#8217;s site-packages
+directories (e.g. by having the git repo in your dotfiles directory) you&#8217;ll
+have to source the vim plugin file with an absolute path to the plugin
+location.</p>
 <p>Add the following line to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>, where <tt class="docutils literal"><span class="pre">{path}</span></tt> is the path to
-the main Powerline project folder:</p>
+the main Powerline project directory:</p>
 <div class="highlight-python"><pre>source {path}/powerline/ext/vim/powerline.vim</pre>
 </div>
 </div>
@@ -112,7 +120,11 @@ the main Powerline project folder:</p>
 <li><a class="reference internal" href="#vim-plugin-requirements">Vim plugin requirements</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#installing-with-pip">Installing with <tt class="docutils literal"><span class="pre">pip</span></tt></a></li>
+<li><a class="reference internal" href="#distribution-specific-packages">Distribution-specific packages</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#usage">Usage</a><ul>
 <li><a class="reference internal" href="#vim-usage">Vim usage</a></li>
 </ul>
@@ -126,7 +138,7 @@ the main Powerline project folder:</p>
                         title="previous chapter">Introduction</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="fontpatching.html"
-                        title="next chapter">Font patcher</a></p>
+                        title="next chapter">Font patching</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/overview.txt"
@@ -156,7 +168,7 @@ the main Powerline project folder:</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="fontpatching.html" title="Font patcher"
+          <a href="fontpatching.html" title="Font patching"
              >next</a> |</li>
         <li class="right" >
           <a href="introduction.html" title="Introduction"

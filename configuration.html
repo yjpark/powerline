@@ -54,29 +54,235 @@
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>Powerline is configured with one main configuration file, and with separate
 configuration files for themes and colorschemes. All configuration files are
-written in JSON, with the excepton of segment definitions, which are written
-in Python.</p>
+written in JSON, with the exception of segment definitions, which are
+written in Python.</p>
 <p>Powerline provides default configurations in the following locations:</p>
 <dl class="docutils">
 <dt><a class="reference internal" href="#main-configuration">Main configuration</a></dt>
 <dd><tt class="docutils literal"><span class="pre">powerline/config.json</span></tt></dd>
-<dt><a class="reference internal" href="#color-scheme">Color scheme</a></dt>
+<dt><a class="reference internal" href="#colorschemes">Colorschemes</a></dt>
 <dd><tt class="docutils literal"><span class="pre">powerline/colorschemes/default.json</span></tt></dd>
-<dt><a class="reference internal" href="#theme">Theme</a></dt>
+<dt><a class="reference internal" href="#themes">Themes</a></dt>
 <dd><tt class="docutils literal"><span class="pre">powerline/themes/{extension}/default.json</span></tt></dd>
 </dl>
 <p>The default configuration files are stored in the main package. User
 configuration files are stored in <tt class="docutils literal"><span class="pre">$XDG_CONFIG_HOME/powerline</span></tt> for Linux
 users, and in <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> for OS X users. This usually
 corresponds to <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> on both platforms.</p>
+<p>The easiest way of creating your own version of any configuration file is to
+copy the configuration file from the main package to the corresponding path
+in your user-specific config directory and make your changes to the new
+file. Example:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>cp /path/to/powerline/colorschemes/default.json <span class="se">\</span>
+    ~/.config/powerline/colorschemes/mycolorscheme.json
+
+<span class="nv">$ </span>vim ~/.config/powerline/colorschemes/mycolorscheme.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re creating a custom colorscheme or theme, remember to
+rename it and update your main configuration to use the new
+colorscheme/theme!</p>
+</div>
 <div class="section" id="main-configuration">
 <h2>Main configuration<a class="headerlink" href="#main-configuration" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/config.json</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>The main configuration file defines some common options that applies to all
+extensions, as well as some extension-specific options like themes and
+colorschemes.</p>
+<div class="section" id="common-configuration">
+<h3>Common configuration<a class="headerlink" href="#common-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">dividers</span></tt></dt>
+<dd><p class="first">Defines the dividers used in all Powerline extensions. This option
+should usually only be changed if you don&#8217;t have a patched font, or if
+you use a font patched with the legacy font patcher.</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">hard</span></tt> dividers are used to divide segments with different
+background colors, while the <tt class="docutils literal"><span class="pre">soft</span></tt> dividers are used to divide
+segments with the same background color.</p>
+</dd>
+</dl>
 </div>
-<div class="section" id="color-scheme">
-<h2>Color scheme<a class="headerlink" href="#color-scheme" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="extension-specific-configuration">
+<h3>Extension-specific configuration<a class="headerlink" href="#extension-specific-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">colorscheme</span></tt></dt>
+<dd>Defines the colorscheme used for this extension.</dd>
+<dt><tt class="docutils literal"><span class="pre">theme</span></tt></dt>
+<dd>Defines the theme used for this extension.</dd>
+<dt><tt class="docutils literal"><span class="pre">local_themes</span></tt></dt>
+<dd>Defines themes used when certain conditions are met, e.g. for
+buffer-specific statuslines in vim. Requires a custom matcher and theme.</dd>
+</dl>
 </div>
-<div class="section" id="theme">
-<h2>Theme<a class="headerlink" href="#theme" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="colorschemes">
+<h2>Colorschemes<a class="headerlink" href="#colorschemes" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/colorschemes/{name}.json</span></tt></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">name</span></tt></dt>
+<dd>Name of the colorscheme.</dd>
+<dt><tt class="docutils literal"><span class="pre">colors</span></tt></dt>
+<dd><p class="first" id="config-colorscheme-colors">Color definitions, consisting of a dict where the key is the name of the
+color, and the value is one of the following:</p>
+<ul class="last simple">
+<li>A cterm color index.</li>
+<li>A list of two integers, where the first integer is a cterm color
+index, and the second is an RGB/hex color. This is useful for
+colorschemes that use colors that aren&#8217;t available in color terminals.</li>
+</ul>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">groups</span></tt></dt>
+<dd><p class="first" id="config-colorscheme-groups">Segment highlighting groups, consisting of a dict where the key is the
+name of the highlighting group (usually the function name for function
+segments), and the value is a dict that defines the foreground color,
+background color and optional attributes:</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">fg</span></tt></dt>
+<dd>Foreground color. Must be defined in <a class="reference internal" href="#config-colorscheme-colors"><em>colors</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">bg</span></tt></dt>
+<dd>Background color. Must be defined in <a class="reference internal" href="#config-colorscheme-colors"><em>colors</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">attr</span></tt></dt>
+<dd>Optional list of attributes. Valid values are one or more of
+<tt class="docutils literal"><span class="pre">bold</span></tt>, <tt class="docutils literal"><span class="pre">italic</span></tt> and <tt class="docutils literal"><span class="pre">underline</span></tt>. Note that some attributes
+may be unavailable in some applications or terminal emulators.</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mode_translations</span></tt></dt>
+<dd><p class="first">Mode-specific highlighting for extensions that support it (e.g. the vim
+extension). It&#8217;s an easy way of changing a color in a specific mode.
+Consists of a dict where the key is the mode and the value is a dict
+with the following options:</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">colors</span></tt></dt>
+<dd>A dict where the key is the color to be translated in this mode, and
+the value is the new color. Both the key and the value must be
+defined in <a class="reference internal" href="#config-colorscheme-colors"><em>colors</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">groups</span></tt></dt>
+<dd>Segment highlighting groups for this mode. Same syntax as the main
+<a class="reference internal" href="#config-colorscheme-groups"><em>groups</em></a> option.</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/themes/{extension}/{name}.json</span></tt></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">name</span></tt></dt>
+<dd>Name of the theme.</dd>
+<dt><tt class="docutils literal"><span class="pre">segments</span></tt></dt>
+<dd><p class="first">A dict with a <tt class="docutils literal"><span class="pre">left</span></tt> and a <tt class="docutils literal"><span class="pre">right</span></tt> list, consisting of segment
+dicts. Each segment has the following options:</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">type</span></tt></dt>
+<dd><p class="first">The segment type. Can be one of <tt class="docutils literal"><span class="pre">function</span></tt> (default), <tt class="docutils literal"><span class="pre">string</span></tt>
+or <tt class="docutils literal"><span class="pre">filler</span></tt>:</p>
+<dl class="last docutils">
+<dt><tt class="docutils literal"><span class="pre">function</span></tt></dt>
+<dd>The segment contents is the return value of the function defined
+in the <a class="reference internal" href="#config-themes-seg-name"><em>name option</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">string</span></tt></dt>
+<dd>A static string segment where the contents is defined in the
+<a class="reference internal" href="#config-themes-seg-contents"><em>contents option</em></a>, and the
+highlighting group is defined in the <a class="reference internal" href="#config-themes-seg-highlight"><em>highlight option</em></a>.</dd>
+<dt><tt class="docutils literal"><span class="pre">filler</span></tt></dt>
+<dd>If the statusline is rendered with a specific width, remaining
+whitespace is distributed among filler segments. The
+highlighting group is defined in the <a class="reference internal" href="#config-themes-seg-highlight"><em>highlight option</em></a>.</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">module</span></tt></dt>
+<dd><p class="first last" id="config-themes-seg-module">Function module, only required for function segments. Defaults to
+<tt class="docutils literal"><span class="pre">core</span></tt>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">name</span></tt></dt>
+<dd><p class="first last" id="config-themes-seg-name">Function name, only required for function segments.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">highlight</span></tt></dt>
+<dd><p class="first last" id="config-themes-seg-highlight">Highlighting group for this segment. Consists of a prioritized list
+of highlighting groups, where the first highlighting group that is
+available in the colorscheme is used.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">before</span></tt></dt>
+<dd>A string which will be prepended to the segment contents.</dd>
+<dt><tt class="docutils literal"><span class="pre">after</span></tt></dt>
+<dd>A string which will be appended to the segment contents.</dd>
+<dt><tt class="docutils literal"><span class="pre">contents</span></tt></dt>
+<dd><p class="first last" id="config-themes-seg-contents">Segment contents, only required for <tt class="docutils literal"><span class="pre">string</span></tt> segments.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">args</span></tt></dt>
+<dd>A dict of arguments to be passed to a <tt class="docutils literal"><span class="pre">function</span></tt> segment.</dd>
+<dt><tt class="docutils literal"><span class="pre">ljust</span></tt></dt>
+<dd>If set, the segment will be left justified to the width specified by
+this option.</dd>
+<dt><tt class="docutils literal"><span class="pre">rjust</span></tt></dt>
+<dd>If set, the segment will be right justified to the width specified
+by this option.</dd>
+<dt><tt class="docutils literal"><span class="pre">priority</span></tt></dt>
+<dd><p class="first">Optional segment priority. Segments with priority <tt class="docutils literal"><span class="pre">-1</span></tt> (the
+default priority) will always be included, regardless of the width
+of the prompt/statusline.</p>
+<p>If the priority is <tt class="docutils literal"><span class="pre">0</span></tt> or more, the segment may be removed if the
+prompt/statusline width is too small for all the segments to be
+rendered. A lower number means that the segment has a higher
+priority.</p>
+<p class="last">Segments are removed according to their priority, with low priority
+segments being removed first.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">draw_divider</span></tt></dt>
+<dd>Whether to draw a divider between this and the adjacent segment. The
+adjacent segment is to the <em>right</em> for segments on the <em>left</em> side,
+and vice versa.</dd>
+<dt><tt class="docutils literal"><span class="pre">exclude_modes</span></tt></dt>
+<dd>A list of modes where this segment will be excluded: The segment is
+included in all modes, <em>except</em> for the modes in this list.</dd>
+<dt><tt class="docutils literal"><span class="pre">include_modes</span></tt></dt>
+<dd>A list of modes where this segment will be included: The segment is
+<em>not</em> included in any modes, <em>except</em> for the modes in this list.</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="segments">
+<h2>Segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
+<p>Segments are written in Python, and the default segments provided with
+Powerline are located in <tt class="docutils literal"><span class="pre">powerline/ext/{extension}/segments/{module}.py</span></tt>.
+User-defined segments can be defined in the corresponding path in the user&#8217;s
+config directory.</p>
+<p>Segments are regular Python functions, and they may accept arguments. All
+arguments should have a default value which will be used for themes that
+don&#8217;t provide an <tt class="docutils literal"><span class="pre">args</span></tt> dict.</p>
+<p>A segment function must return one of the following values:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">None</span></tt>, which will remove the segment from the prompt/statusline.</li>
+<li>A string, which will be the segment contents.</li>
+<li>A dict consisting of a <tt class="docutils literal"><span class="pre">contents</span></tt> string, and a <tt class="docutils literal"><span class="pre">highlight</span></tt> list. This
+is useful for providing a particular highlighting group depending on the
+segment contents.</li>
+</ul>
 </div>
 </div>
 
@@ -89,9 +295,14 @@ corresponds to <tt class="docutils literal"><span class="pre">~/.config/powerlin
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Configuration</a><ul>
-<li><a class="reference internal" href="#main-configuration">Main configuration</a></li>
-<li><a class="reference internal" href="#color-scheme">Color scheme</a></li>
-<li><a class="reference internal" href="#theme">Theme</a></li>
+<li><a class="reference internal" href="#main-configuration">Main configuration</a><ul>
+<li><a class="reference internal" href="#common-configuration">Common configuration</a></li>
+<li><a class="reference internal" href="#extension-specific-configuration">Extension-specific configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#colorschemes">Colorschemes</a></li>
+<li><a class="reference internal" href="#themes">Themes</a></li>
+<li><a class="reference internal" href="#segments">Segments</a></li>
 </ul>
 </li>
 </ul>

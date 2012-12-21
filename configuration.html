@@ -59,16 +59,16 @@ written in Python.</p>
 <p>Powerline provides default configurations in the following locations:</p>
 <dl class="docutils">
 <dt><a class="reference internal" href="#main-configuration">Main configuration</a></dt>
-<dd><tt class="docutils literal"><span class="pre">powerline/config.json</span></tt></dd>
+<dd><tt class="file docutils literal"><span class="pre">powerline/config.json</span></tt></dd>
 <dt><a class="reference internal" href="#colorschemes">Colorschemes</a></dt>
-<dd><tt class="docutils literal"><span class="pre">powerline/colorschemes/default.json</span></tt></dd>
+<dd><tt class="file docutils literal"><span class="pre">powerline/colorschemes/default.json</span></tt></dd>
 <dt><a class="reference internal" href="#themes">Themes</a></dt>
-<dd><tt class="docutils literal"><span class="pre">powerline/themes/{extension}/default.json</span></tt></dd>
+<dd><tt class="file docutils literal"><span class="pre">powerline/themes/</span><em><span class="pre">extension</span></em><span class="pre">/default.json</span></tt></dd>
 </dl>
 <p>The default configuration files are stored in the main package. User
-configuration files are stored in <tt class="docutils literal"><span class="pre">$XDG_CONFIG_HOME/powerline</span></tt> for Linux
-users, and in <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> for OS X users. This usually
-corresponds to <tt class="docutils literal"><span class="pre">~/.config/powerline</span></tt> on both platforms.</p>
+configuration files are stored in <tt class="file docutils literal"><span class="pre">$XDG_CONFIG_HOME/powerline</span></tt> for
+Linux users, and in <tt class="file docutils literal"><span class="pre">~/.config/powerline</span></tt> for OS X users. This usually
+corresponds to <tt class="file docutils literal"><span class="pre">~/.config/powerline</span></tt> on both platforms.</p>
 <p>The easiest way of creating your own version of any configuration file is to
 copy the configuration file from the main package to the corresponding path
 in your user-specific config directory and make your changes to the new
@@ -91,7 +91,7 @@ colorscheme/theme!</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/config.json</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="file docutils literal"><span class="pre">powerline/config.json</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -130,7 +130,7 @@ buffer-specific statuslines in vim. Requires a custom matcher and theme.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/colorschemes/{name}.json</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="file docutils literal"><span class="pre">powerline/colorschemes/</span><em><span class="pre">name</span></em><span class="pre">.json</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -186,7 +186,7 @@ defined in <a class="reference internal" href="#config-colorscheme-colors"><em>c
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="docutils literal"><span class="pre">powerline/themes/{extension}/{name}.json</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Location:</th><td class="field-body"><tt class="file docutils literal"><span class="pre">powerline/themes/</span><em><span class="pre">extension</span></em><span class="pre">/</span><em><span class="pre">name</span></em><span class="pre">.json</span></tt></td>
 </tr>
 </tbody>
 </table>
@@ -269,9 +269,10 @@ included in all modes, <em>except</em> for the modes in this list.</dd>
 <div class="section" id="segments">
 <h2>Segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
 <p>Segments are written in Python, and the default segments provided with
-Powerline are located in <tt class="docutils literal"><span class="pre">powerline/ext/{extension}/segments/{module}.py</span></tt>.
-User-defined segments can be defined in the corresponding path in the user&#8217;s
-config directory.</p>
+Powerline are located in
+<tt class="file docutils literal"><span class="pre">powerline/ext/</span><em><span class="pre">extension</span></em><span class="pre">/segments/</span><em><span class="pre">module</span></em><span class="pre">.py</span></tt>. User-defined
+segments can be defined in the corresponding path in the user&#8217;s config
+directory.</p>
 <p>Segments are regular Python functions, and they may accept arguments. All
 arguments should have a default value which will be used for themes that
 don&#8217;t provide an <tt class="docutils literal"><span class="pre">args</span></tt> dict.</p>

@@ -120,8 +120,8 @@ configuration.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>The font patcher is located at <tt class="docutils literal"><span class="pre">powerline/fontpatcher/fontpatcher.py</span></tt>. It
-requires Python 2.7 and FontForge compiled with Python bindings to work.</p>
+<p>The font patcher is located at <tt class="file docutils literal"><span class="pre">powerline/fontpatcher/fontpatcher.py</span></tt>.
+It requires Python 2.7 and FontForge compiled with Python bindings to work.</p>
 <p>Patched fonts are renamed by default (&#8221; for Powerline&#8221; is added to the font
 name) so they don&#8217;t conflict with existing fonts. Use the <tt class="docutils literal"><span class="pre">--no-rename</span></tt>
 option to disable font renaming.</p>
@@ -144,7 +144,7 @@ distros.</p>
 <div class="highlight-python"><pre>$ /path/to/fontpatcher.py MyFontFile.ttf</pre>
 </div>
 </li>
-<li><p class="first">Copy the font file into <tt class="docutils literal"><span class="pre">~/.fonts</span></tt> (or another X font directory):</p>
+<li><p class="first">Copy the font file into <tt class="file docutils literal"><span class="pre">~/.fonts</span></tt> (or another X font directory):</p>
 <div class="highlight-python"><pre>$ cp "MyFontFile for Powerline.otf" ~/.fonts</pre>
 </div>
 </li>
@@ -154,7 +154,7 @@ distros.</p>
 <p>If you&#8217;re using vim in a terminal you may need to close all open terminal
 windows after updating the font cache.</p>
 </li>
-<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="docutils literal"><span class="pre">vimrc</span></tt> file:</p>
+<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="file docutils literal"><span class="pre">vimrc</span></tt> file:</p>
 <div class="highlight-python"><pre>set guifont=MyFont\ for\ Powerline</pre>
 </div>
 <p><strong>Terminal users:</strong> Update your terminal configuration to use the patched
@@ -201,7 +201,7 @@ FontForge:</p>
 <li><p class="first">Install the font by double-clicking the font file in Finder and click
 &#8220;Install this font&#8221; from the preview window.</p>
 </li>
-<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="docutils literal"><span class="pre">vimrc</span></tt> file:</p>
+<li><p class="first"><strong>Gvim users:</strong> Update the GUI font in your <tt class="file docutils literal"><span class="pre">vimrc</span></tt> file:</p>
 <div class="highlight-python"><pre>set guifont=MyFont\ for\ Powerline</pre>
 </div>
 <p><strong>Terminal users:</strong> Update your terminal configuration to use the patched

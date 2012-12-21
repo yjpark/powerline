@@ -82,7 +82,7 @@ contrast&#8221; slider in the color tab of  your OS X settings.</p>
 </dd>
 <dt>I&#8217;m using tmux and Powerline looks like crap, what&#8217;s wrong?</dt>
 <dd><p class="first">You need to tell tmux that it has 256-color capabilities. Add this to
-your <tt class="docutils literal"><span class="pre">.tmux.conf</span></tt> to solve this issue:</p>
+your <tt class="file docutils literal"><span class="pre">.tmux.conf</span></tt> to solve this issue:</p>
 <div class="highlight-python"><pre>set -g default-terminal "screen-256color"</pre>
 </div>
 <p class="last">If you use iTerm2, make sure that you have enabled the setting &#8216;Set
@@ -93,16 +93,16 @@ locale variables automatically&#8217; in Profiles &gt; Terminal &gt; Environment
 <h2>Vim-specific issues<a class="headerlink" href="#vim-specific-issues" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>The statusline has strange characters like <tt class="docutils literal"><span class="pre">^B</span></tt> in it!</dt>
-<dd>Please add <tt class="docutils literal"><span class="pre">set</span> <span class="pre">encoding=utf-8</span></tt> to your <tt class="docutils literal"><span class="pre">vimrc</span></tt>.</dd>
+<dd>Please add <tt class="docutils literal"><span class="pre">set</span> <span class="pre">encoding=utf-8</span></tt> to your <tt class="file docutils literal"><span class="pre">vimrc</span></tt>.</dd>
 <dt>The statusline has a lot of <tt class="docutils literal"><span class="pre">^</span></tt> or underline characters in it!</dt>
 <dd><p class="first">You need to configure the <tt class="docutils literal"><span class="pre">fillchars</span></tt> setting to disable statusline
 fillchars (see <tt class="docutils literal"><span class="pre">:h</span> <span class="pre">fillchars</span></tt> for details). Add this to your
-<tt class="docutils literal"><span class="pre">vimrc</span></tt> to solve this issue:</p>
+<tt class="file docutils literal"><span class="pre">vimrc</span></tt> to solve this issue:</p>
 <div class="last highlight-python"><pre>set fillchars+=stl:\ ,stlnc:\</pre>
 </div>
 </dd>
 <dt>The statusline is hidden/only appears in split windows!</dt>
-<dd>Make sure that you have <tt class="docutils literal"><span class="pre">set</span> <span class="pre">laststatus=2</span></tt> in your <tt class="docutils literal"><span class="pre">vimrc</span></tt>.</dd>
+<dd>Make sure that you have <tt class="docutils literal"><span class="pre">set</span> <span class="pre">laststatus=2</span></tt> in your <tt class="file docutils literal"><span class="pre">vimrc</span></tt>.</dd>
 </dl>
 </div>
 </div>

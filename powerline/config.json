@@ -1,17 +1,5 @@
 {
-    "common": {
-        "dividers": {
-            "left": {
-                "hard": "⮀",
-                "soft": "⮁"
-            },
-            "right": {
-                "hard": "⮂",
-                "soft": "⮃"
-            }
-        }
-    },
-	"common_default": {
+	"common": {
 		"dividers": {
 			"left": {
 				"hard": "",
